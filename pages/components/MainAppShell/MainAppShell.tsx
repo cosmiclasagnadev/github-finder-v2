@@ -12,7 +12,6 @@ const links = [{link: '/', label: 'Home'}, {link: '/login', label: 'Login'}];
 
 export const MainAppShell = (props: any) => {
     const theme = useMantineTheme();
-    const [opened, setOpened] = useState<boolean>(false);
     return (
         <AppShell
             styles={{

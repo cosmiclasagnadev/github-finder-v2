@@ -5,7 +5,6 @@ import {headerUseStyles} from './HeaderSimple.styles';
 import {useRouter} from 'next/router'
 
 import {IconSun, IconMoonStars} from '@tabler/icons';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 interface HeaderSimpleProps {
     links: {link: string; label: string}[];
