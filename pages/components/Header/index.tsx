@@ -1,0 +1,1 @@
+export {HeaderSimple} from './HeaderSimple'
