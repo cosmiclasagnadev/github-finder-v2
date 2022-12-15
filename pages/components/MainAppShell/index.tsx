@@ -1,1 +1,1 @@
-export {MainAppShell} from './MainAppShell'
+export {default} from './MainAppShell'

@@ -1,7 +1,7 @@
 import React, {useState, ReactNode} from 'react';
 import {Text, Header, Container, Group, Burger, ActionIcon, useMantineColorScheme, Title, useMantineTheme, Button} from '@mantine/core';
 import {useDisclosure} from '@mantine/hooks';
-import {headerUseStyles} from './HeaderSimple.styles';
+import headerUseStyles from './HeaderSimple.styles';
 import {useRouter} from 'next/router'
 
 import {IconSun, IconMoonStars} from '@tabler/icons';
@@ -41,7 +41,7 @@ const getItems = (classes: any, setActive: any, router: any, cx: any, active: an
     )
 }
 
-export function HeaderSimple({links}: HeaderSimpleProps) {
+export default function HeaderSimple({links}: HeaderSimpleProps) {
     const {colorScheme, toggleColorScheme} = useMantineColorScheme();
     const theme = useMantineTheme();
     const dark = colorScheme === 'dark';

@@ -6,11 +6,11 @@ import {
     useMantineTheme,
     Container,
 } from '@mantine/core';
-import {HeaderSimple} from '../Header';
+import HeaderSimple from '../Header';
 
 const links = [{link: '/', label: 'Home'}, {link: '/login', label: 'Login'}];
 
-export const MainAppShell = (props: any) => {
+const MainAppShell = (props: any) => {
     const theme = useMantineTheme();
     return (
         <AppShell
@@ -36,3 +36,5 @@ export const MainAppShell = (props: any) => {
         </AppShell>
     )
 }
+
+export default MainAppShell;
