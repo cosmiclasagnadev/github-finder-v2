@@ -2,7 +2,7 @@ import {useState} from "react";
 import {AppProps} from "next/app";
 import Head from "next/head";
 import {MantineProvider, ColorSchemeProvider, ColorScheme} from "@mantine/core";
-import MainAppShell from "./components/MainAppShell";
+import {MainAppShell} from "../components/MainAppShell";
 
 export default function App(props: AppProps) {
   const {Component, pageProps} = props;
@@ -14,7 +14,7 @@ export default function App(props: AppProps) {
   return (
     <>
       <Head>
-        <title>Page title</title>
+        <title>Github Finder</title>
         <link rel="shortcut icon" href="/favicon.svg" />
         <meta
           name="viewport"

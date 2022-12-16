@@ -10,7 +10,7 @@ import HeaderSimple from '../Header';
 
 const links = [{link: '/', label: 'Home'}, {link: '/login', label: 'Login'}];
 
-const MainAppShell = (props: any) => {
+export const MainAppShell = (props: any) => {
     const theme = useMantineTheme();
     return (
         <AppShell
@@ -36,5 +36,3 @@ const MainAppShell = (props: any) => {
         </AppShell>
     )
 }
-
-export default MainAppShell;
