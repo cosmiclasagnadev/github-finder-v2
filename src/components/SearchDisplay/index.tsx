@@ -5,9 +5,11 @@ import {UserResult} from '../../types/users';
 
 interface SearchDisplayProps {
     results: Array<UserResult>;
+    totalCount: number;
+    handlePaginate: (page: number) => void;
 }
 
-const SearchDisplay = ({results}: SearchDisplayProps) => {
+const SearchDisplay = ({results, totalCount, handlePaginate}: SearchDisplayProps) => {
     if (results.length === 0) {
         return (
             <NoResults />
@@ -15,7 +17,7 @@ const SearchDisplay = ({results}: SearchDisplayProps) => {
     }
 
     return (
-        <UserResults items={results} />
+        <UserResults totalPages={totalCount} items={results} handlePaginate={handlePaginate} />
     )
 }
 

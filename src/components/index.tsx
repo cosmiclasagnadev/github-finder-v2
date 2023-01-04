@@ -4,3 +4,4 @@ export * from './NoResults';
 export * from './UserResults';
 export * from './SearchDisplay';
 export * from './UserCard';
+export * from './CardLoader';

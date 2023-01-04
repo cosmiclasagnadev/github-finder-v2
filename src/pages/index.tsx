@@ -5,24 +5,26 @@ import SearchDisplay from "../components/SearchDisplay";
 import axios from "axios";
 import {UserResult} from "../types/users";
 import {showNotification} from "@mantine/notifications";
+import CardLoader from "../components/CardLoader";
 
 export default function IndexPage() {
   const theme = useMantineTheme();
   const [searchQuery, setSearch] = React.useState('');
-  const [page, setPage] = React.useState(1);
+  const [activePage, setPage] = React.useState(1);
   const [results, setResults] = React.useState<Array<UserResult>>([]);
   const [loading, setLoading] = React.useState<boolean>(false);
+  const [totalResults, setTotalresults] = React.useState<number>(0);
 
 
 
   const handleQuery = async () => {
+    setLoading(true);
     try {
-      setLoading(true);
-      const response: any = await axios.get("https://api.github.com/search/users?q=" + searchQuery + `&page=${page}`);
+      const response: any = await axios.get("https://api.github.com/search/users?q=" + searchQuery + `&page=${activePage}`);
       const users = response.data.items;
       console.log(response);
       setResults(users);
-      setLoading(false);
+      setTotalresults(response.data.total_count);
     } catch (error: any) {
       console.log(error);
       if (error.response.status === 422) {
@@ -39,8 +41,24 @@ export default function IndexPage() {
         })
       }
     }
+    setLoading(false);
   }
 
+  const handlePaginate = async (page: number) => {
+    console.log('Getting page: ', page);
+    try {
+      setPage(page);
+      const response: any = await axios.get("https://api.github.com/search/users?q=" + searchQuery + `&page=${activePage}`);
+      const users = response.data.items;
+      setResults(current => users);
+    } catch (error: any) {
+      showNotification({
+        title: "Error",
+        message: "Something went wrong. Please try again later",
+        color: "red",
+      })
+    }
+  }
   return (
     <Container size="xl">
       <TextInput
@@ -56,26 +74,11 @@ export default function IndexPage() {
         onChange={(e) => setSearch(e.currentTarget.value)}
       />
       {(loading === true) ? (
-        <Loader />
+        <CardLoader />
       ) : (
-        <SearchDisplay results={results} />
+        <SearchDisplay handlePaginate={handlePaginate} totalCount={Math.ceil(totalResults / 30)} results={results} />
       )}
 
     </Container>
   );
-}
-
-const Loader = () => {
-  return (
-    <SimpleGrid cols={4}>
-      {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map((item, index) => (
-        <Card key={index} withBorder radius="md" >
-          <Skeleton height={50} circle mb="xl" />
-          <Skeleton height={8} radius="xl" />
-          <Skeleton height={8} mt={6} radius="xl" />
-          <Skeleton height={8} mt={6} width="70%" radius="xl" />
-        </Card>
-      ))}
-    </SimpleGrid>
-  )
 }
