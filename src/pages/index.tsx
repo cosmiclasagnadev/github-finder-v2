@@ -9,7 +9,7 @@ import CardLoader from "../components/CardLoader";
 
 export const fetchConfig = {
   headers: {
-    authorization: `token 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`
+    authorization: `${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`
   }
 }
 
@@ -31,8 +31,6 @@ export default function IndexPage() {
           const users = response.data.items;
           setResults(current => users);
           setTotalresults(response.data.total_count);
-        } else {
-          console.log('Initial Load 🚀')
         }
       } catch (error: any) {
         if (error.response.status === 422) {
@@ -86,7 +84,7 @@ export default function IndexPage() {
       {(loading === true) ? (
         <CardLoader />
       ) : (
-        <SearchDisplay handlePaginate={handlePaginate} totalCount={Math.ceil(totalResults / 30)} results={results} />
+        <SearchDisplay handlePaginate={handlePaginate} totalCount={Math.ceil(1000 / 30)} results={results} />
       )}
 
     </Container>

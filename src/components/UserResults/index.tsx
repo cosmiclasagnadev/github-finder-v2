@@ -15,7 +15,7 @@ const UserResults = ({items, totalPages, handlePaginate}: Props) => {
     }
     return (
         <>
-            <Box mb={8}>
+            <Box mb={16}>
                 <Pagination total={totalPages} onChange={paginate} />
             </Box>
             <SimpleGrid cols={5} breakpoints={[
