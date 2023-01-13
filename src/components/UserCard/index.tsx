@@ -1,4 +1,5 @@
 import {ActionIcon, Avatar, Box, Button, Card, Center, createStyles, Flex, SimpleGrid, Title} from '@mantine/core'
+import {useRouter} from 'next/router';
 import React from 'react'
 import {UserResult} from '../../types/users'
 import {IconExternalLink} from '@tabler/icons';
@@ -19,8 +20,11 @@ const useStyles = createStyles((theme) => ({
 
 const UserCard = ({user}: UserCardProps) => {
     const {classes} = useStyles();
+    const router = useRouter();
     return (
-        <Card key={user.id} className={classes.card} withBorder radius="md">
+        <Card key={user.id} className={classes.card} withBorder radius="md" onClick={() => {
+            router.push(`/user/${user.login}`);
+        }}>
             <Flex direction="row" justify="center" align="center">
                 <Avatar size="xl" radius={100} src={user.avatar_url} />
             </Flex>

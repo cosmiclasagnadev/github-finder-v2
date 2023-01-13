@@ -25,6 +25,7 @@ export default function IndexPage() {
 
   useEffect(() => {
     async function updateDataOnPaginate() {
+      setLoading(true)
       try {
         if (submittedString.length > 0) {
           const response: any = await axios.get("https://api.github.com/search/users?q=" + submittedString + `&page=${activePage}`, fetchConfig);
@@ -47,6 +48,7 @@ export default function IndexPage() {
           })
         }
       }
+      setLoading(false)
     }
 
     updateDataOnPaginate();
@@ -55,16 +57,11 @@ export default function IndexPage() {
 
 
   const handleSubmit = () => {
-    setLoading(true);
     setSubmittedString(searchQuery);
-    setLoading(false);
   }
 
   const handlePaginate = async (page: number) => {
-    console.log('Getting page: ', page);
-    setLoading(true);
     setPage(page);
-    setLoading(false);
   }
 
   return (
@@ -84,7 +81,7 @@ export default function IndexPage() {
       {(loading === true) ? (
         <CardLoader />
       ) : (
-        <SearchDisplay handlePaginate={handlePaginate} totalCount={Math.ceil(1000 / 30)} results={results} />
+        <SearchDisplay handlePaginate={handlePaginate} totalCount={Math.ceil(totalResults / 30)} results={results} />
       )}
 
     </Container>
