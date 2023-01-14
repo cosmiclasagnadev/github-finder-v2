@@ -9,7 +9,7 @@ const ReposCard = ({repoObject}: any) => {
             <Card.Section withBorder p="md">
                 <Group position="apart" noWrap>
                     <Title order={3}>
-                        <Text lineClamp={1}>{repoObject.full_name}
+                        <Text lineClamp={1}>{repoObject.name}
                         </Text>
                     </Title>
                     <ActionIcon component='a' href={repoObject.html_url} target="_blank">

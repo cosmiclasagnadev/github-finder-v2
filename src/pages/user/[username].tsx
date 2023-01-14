@@ -98,7 +98,7 @@ const UserPage = () => {
                     </Group>
                     <Text mt={5}>{userObject.bio}</Text>
                     <Box mt="md">
-                        <Badge size="lg" color={userObject.hireable ? "teal" : "gray"} mr={8}>
+                        <Badge size="lg" color={userObject.hireable ? "teal" : "gray"} mr={8} mb={8}>
                             {userObject.hireable ? "Open to Hiring" : "Not Open to Hiring"}
                         </Badge>
                         <Badge size="lg" color="blue" mr={8} mb={8}>
@@ -117,7 +117,11 @@ const UserPage = () => {
                 </Card.Section>
                 <Card.Section p="xl" withBorder>
                     {/* <Button leftIcon={<IconBrandGithub />} variant="subtle" color="teal" component='a' href={userObject.html_url}>View Github Profile</Button> */}
-                    <SimpleGrid cols={3}>
+                    <SimpleGrid cols={3} breakpoints={[
+                        {maxWidth: 'md', cols: 3, spacing: 'md'},
+                        {maxWidth: 'sm', cols: 2, spacing: 'sm'},
+                        {maxWidth: 'xs', cols: 1, spacing: 'sm'},
+                    ]}>
                         {repos && repos.map((repo, index) => {
                             return (
                                 <div key={index}>
