@@ -17,7 +17,7 @@ const ReposCard = ({repoObject}: any) => {
                     </ActionIcon>
                 </Group>
                 <Text mb={5} lineClamp={2}>{repoObject.description}</Text>
-                <Text size="xs" color="dimmed">Created {moment(repoObject.created_at).fromNow()} ∙ Updated {moment(repoObject.updated_at).fromNow()} ∙ Pushed {moment(repoObject.pushed_at).fromNow()}</Text>
+                <Text size="xs" color="dimmed">Created {moment(repoObject.created_at).fromNow()} ∙ Pushed {moment(repoObject.pushed_at).fromNow()}</Text>
             </Card.Section>
             <Card.Section p="md">
                 <Group spacing="sm">
