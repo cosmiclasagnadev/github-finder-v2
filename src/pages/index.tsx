@@ -1,5 +1,5 @@
-import {ActionIcon, Card, Container, LoadingOverlay, SimpleGrid, Skeleton, Text, TextInput, useMantineTheme} from "@mantine/core";
-import {IconSearch} from "@tabler/icons";
+import {ActionIcon, Alert, Card, Container, LoadingOverlay, SimpleGrid, Skeleton, Text, TextInput, useMantineTheme} from "@mantine/core";
+import {IconAlertCircle, IconSearch} from "@tabler/icons";
 import React, {useEffect} from "react";
 import SearchDisplay from "../components/SearchDisplay";
 import axios from "axios";
@@ -66,6 +66,10 @@ export default function IndexPage() {
 
   return (
     <Container size="xl">
+
+      <Alert icon={<IconAlertCircle size={16} />} color="yellow" mb="sm">
+        Currently this app can only display your first 1000 results. Hold tight! I&apos;m working on a fix for it 🤓
+      </Alert>
       <TextInput
         size="md"
         mb={18}
